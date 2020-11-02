@@ -1,12 +1,7 @@
 package com.test.app.repository;
 
-import org.springframework.stereotype.Repository;
+public interface ItemRepository {
 
-@Repository
-public class ItemRepository {
-
-    public long count() {
-        return 123L;
-    }
+    long count();
 
 }

@@ -1,16 +1,32 @@
 package com.test.app;
 
-import com.test.app.repository.ItemRepository;
 import com.test.app.service.HelloService;
+import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 @ComponentScan // component scan mechanismus: abychom nemuseli rucne zapojovat vsechny Spring beany do Spring kontejneru
                // kdyz u @ComponentScan neni definovany balicek, ktery se bude scanovat, tak se bude scanovat aktualni balicek (a jeho podbalicky)
 //@ComponentScan("com.test.app") // toto je to same jako @ComponentScan v tomto pripade!!!
 public class Main {
+
+    @Bean
+    public HikariDataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setJdbcUrl("jdbc:hsqldb:hsql://localhost/eshop");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+        return dataSource;
+    }
+
+    @Bean
+    public JdbcTemplate jdbcTemplate() {
+        return new JdbcTemplate(dataSource()); // TODO Vratit se sem a vysvetlit!!!
+    }
 
     public static void main(String[] args) {
         // tohle by take fungovalo:
