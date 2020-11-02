@@ -50,11 +50,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+        applicationContext.getEnvironment().setActiveProfiles("dummy");
+        applicationContext.register(Main.class);
+        applicationContext.refresh(); // timto se naplni Spring kontejner objekty
+
+        // NEBO NASTAVIT DO VM options: -Dspring.profiles.active="dev"
+        // tohle je Spring kontejner, v cele aplikaci je 1x!!!!!!
+//        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
+
         // tohle by take fungovalo:
 //        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(HelloService.class, ItemRepository.class);
-
-        // tohle je Spring kontejner, v cele aplikaci je 1x!!!!!!
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
 
         HelloService helloService = applicationContext.getBean(HelloService.class);
 

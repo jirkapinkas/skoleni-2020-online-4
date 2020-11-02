@@ -13,7 +13,7 @@ public class HelloService {
 
     private final ItemRepository itemRepository;
 
-    public HelloService(@Qualifier("jdbcItemRepository") ItemRepository itemRepository) {
+    public HelloService(/*@Qualifier("jdbcItemRepository")*/ ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
 
