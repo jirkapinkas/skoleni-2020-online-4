@@ -2,11 +2,16 @@ package com.test.app;
 
 import com.test.app.service.HelloService;
 import com.zaxxer.hikari.HikariDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan // component scan mechanismus: abychom nemuseli rucne zapojovat vsechny Spring beany do Spring kontejneru
@@ -16,6 +21,7 @@ public class Main {
 
     @Bean
     public HikariDataSource dataSource() {
+//        System.out.println("dataSource constructed!");
         HikariDataSource dataSource = new HikariDataSource();
         dataSource.setJdbcUrl("jdbc:hsqldb:hsql://localhost/eshop");
         dataSource.setUsername("sa");
@@ -23,9 +29,24 @@ public class Main {
         return dataSource;
     }
 
+//    @Bean
+//    public JdbcTemplate jdbcTemplate() {
+////        System.out.println("jdbcTemplate constructed!");
+//        return new JdbcTemplate(dataSource());
+//    }
+
+//    @Bean
+//    public JdbcTemplate jdbcTemplate(DataSource dataSource, @Value("${java.version}") String javaVersion) {
+//        System.out.println("java version: " + javaVersion);
+////        System.out.println("jdbcTemplate constructed!");
+//        return new JdbcTemplate(dataSource);
+//    }
+//
+
     @Bean
-    public JdbcTemplate jdbcTemplate() {
-        return new JdbcTemplate(dataSource()); // TODO Vratit se sem a vysvetlit!!!
+    public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+//        System.out.println("jdbcTemplate constructed!");
+        return new JdbcTemplate(dataSource);
     }
 
     public static void main(String[] args) {
