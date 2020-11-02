@@ -23,7 +23,7 @@ public class Main {
     public HikariDataSource dataSource() {
 //        System.out.println("dataSource constructed!");
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl("jdbc:hsqldb:hsql://localhost/eshop");
+        dataSource.setJdbcUrl("jdbc:hsqldb:hsql://localhost:9001/eshop");
         dataSource.setUsername("sa");
         dataSource.setPassword("");
         return dataSource;
