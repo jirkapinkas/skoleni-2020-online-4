@@ -41,6 +41,36 @@
         </dependency>
     </dependencies>
 
+    <!-- high-level Spring BOM -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- NEBO: nejvic low-level Spring BOM -->
+    <!--
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>5.2.9.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    -->
+
+    <!-- NEBO: -->
+    <!--
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -150,5 +180,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
+    -->
 </project>
