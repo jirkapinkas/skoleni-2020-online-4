@@ -3,6 +3,7 @@ package com.example.eshopweb.service;
 import com.example.eshopweb.entity.Item;
 import com.example.eshopweb.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class ItemService {
     private ItemRepository itemRepository;
 
     public List<Item> findAll() {
-        return itemRepository.findAll();
+        return itemRepository.findAll(Sort.by("id"));
     }
 
     public Optional<Item> findById(int id) {
