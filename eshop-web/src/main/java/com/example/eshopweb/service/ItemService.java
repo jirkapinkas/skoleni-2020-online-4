@@ -27,7 +27,8 @@ public class ItemService {
 
     public Optional<ItemDto> findById(int id) {
         return itemRepository.findById(id)
-                .map(itemMapper::entityToDto);
+                .map(itemMapper::entityToDto); // od Java 8: method reference
+//                .map(item -> itemMapper.entityToDto(item)); // od Java 8: lambda
     }
 
 }

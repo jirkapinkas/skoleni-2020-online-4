@@ -30,6 +30,15 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<OrderedItem> orderedItems;
 
+    public Item() {
+    }
+
+    public Item(int id, String name, double price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }
@@ -68,5 +77,15 @@ public class Item {
 
     public void setOrderedItems(List<OrderedItem> orderedItems) {
         this.orderedItems = orderedItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                "}'";
     }
 }
