@@ -1,5 +1,6 @@
 package com.example.eshopweb.controller;
 
+import com.example.eshopweb.dto.entity.ItemDto;
 import com.example.eshopweb.entity.Item;
 import com.example.eshopweb.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,13 @@ public class ItemController {
 
     // http://localhost:8080/item
     @GetMapping
-    public List<Item> items() {
+    public List<ItemDto> items() {
         return itemService.findAll();
     }
 
     // http://localhost:8080/item/1
     @GetMapping("/{id}")
-    public Optional<Item> item(@PathVariable int id) {
+    public Optional<ItemDto> item(@PathVariable int id) {
         return itemService.findById(id);
     }
 

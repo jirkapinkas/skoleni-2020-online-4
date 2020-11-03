@@ -1,6 +1,8 @@
 package com.example.eshopweb.service;
 
+import com.example.eshopweb.dto.entity.ItemDto;
 import com.example.eshopweb.entity.Item;
+import com.example.eshopweb.mapper.ItemMapper;
 import com.example.eshopweb.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -15,12 +17,17 @@ public class ItemService {
     @Autowired
     private ItemRepository itemRepository;
 
-    public List<Item> findAll() {
-        return itemRepository.findAll(Sort.by("id"));
+    @Autowired
+    private ItemMapper itemMapper;
+
+    public List<ItemDto> findAll() {
+        List<Item> items = itemRepository.findAll(Sort.by("id"));
+        return itemMapper.entityToDto(items);
     }
 
-    public Optional<Item> findById(int id) {
-        return itemRepository.findById(id);
+    public Optional<ItemDto> findById(int id) {
+        return itemRepository.findById(id)
+                .map(itemMapper::entityToDto);
     }
 
 }
