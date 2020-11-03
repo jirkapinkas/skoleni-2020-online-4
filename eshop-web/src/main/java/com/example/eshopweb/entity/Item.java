@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 //@Data // Tuto anotaci u entity NIKDY NEPOUZIVAT!!!
 // Tyto anotace Lomboku jsou ve spojeni s entitami bezpecne!
@@ -25,6 +26,9 @@ public class Item {
     private double price;
 
     private String description;
+
+    @OneToMany(mappedBy = "item")
+    private List<OrderedItem> orderedItems;
 
     public int getId() {
         return id;
@@ -56,5 +60,13 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<OrderedItem> getOrderedItems() {
+        return orderedItems;
+    }
+
+    public void setOrderedItems(List<OrderedItem> orderedItems) {
+        this.orderedItems = orderedItems;
     }
 }
