@@ -30,6 +30,10 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<OrderedItem> orderedItems;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     public Item() {
     }
 
@@ -77,6 +81,14 @@ public class Item {
 
     public void setOrderedItems(List<OrderedItem> orderedItems) {
         this.orderedItems = orderedItems;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

@@ -12,6 +12,8 @@ public class ItemDto {
 
     private List<OrderedItemDto> orderedItems;
 
+    private CategoryDto category;
+
     public int getId() {
         return id;
     }
@@ -42,5 +44,13 @@ public class ItemDto {
 
     public void setOrderedItems(List<OrderedItemDto> orderedItems) {
         this.orderedItems = orderedItems;
+    }
+
+    public CategoryDto getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDto category) {
+        this.category = category;
     }
 }
