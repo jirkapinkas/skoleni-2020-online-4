@@ -38,6 +38,7 @@ public class ItemService {
 //                .map(item -> itemMapper.entityToDto(item)); // od Java 8: lambda
     }
 
+    @Transactional
     public ItemDto save(ItemDto itemDto) {
         Item item = itemMapper.dtoToEntity(itemDto);
         Item managedItem = itemRepository.save(item); // managedItem obsahuje hodnotu "id"
