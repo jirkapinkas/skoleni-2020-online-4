@@ -21,7 +21,7 @@ public class AppRestControllerAdvice {
     }
 
     @ExceptionHandler
-    public ResponseEntity<Message> handleNotFoundException(DeleteException e) {
+    public ResponseEntity<Message> handleDeleteException(DeleteException e) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new Message(e.getMessage(), 400));
