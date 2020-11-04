@@ -20,8 +20,8 @@ public class ItemService {
     @Autowired
     private ItemMapper itemMapper;
 
-    public List<ItemDto> findAll() {
-        List<Item> items = itemRepository.findAll(Sort.by("id"));
+    public List<ItemDto> findAll(Sort sort) {
+        List<Item> items = itemRepository.findAll(sort);
         return itemMapper.entityToDto(items);
     }
 
@@ -29,6 +29,16 @@ public class ItemService {
         return itemRepository.findById(id)
                 .map(itemMapper::entityToDto); // od Java 8: method reference
 //                .map(item -> itemMapper.entityToDto(item)); // od Java 8: lambda
+    }
+
+    public ItemDto save(ItemDto itemDto) {
+        Item item = itemMapper.dtoToEntity(itemDto);
+        Item managedItem = itemRepository.save(item); // managedItem obsahuje hodnotu "id"
+        return itemMapper.entityToDto(managedItem);
+    }
+
+    public void deleteById(int id) {
+        itemRepository.deleteById(id);
     }
 
 }
