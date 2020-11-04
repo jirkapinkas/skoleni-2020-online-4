@@ -8,8 +8,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item, Integer> {
+
+    // select * from item left join category on ...
+    @Query("select i from Item i left join fetch i.category")
+    List<Item> findAllFetchCategory(Sort sort);
+
+    // select * from item left join category on ... where id = ?
+    @Query("select i from Item i left join fetch i.category where i.id = ?1")
+    Optional<Item> findByIdFetchCategory(int id);
 
     // 1. operace, ktere delaji neco na zaklade hlavicky metody
 

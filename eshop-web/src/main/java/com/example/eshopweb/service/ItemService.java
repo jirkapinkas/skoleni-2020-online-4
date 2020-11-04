@@ -9,6 +9,7 @@ import com.example.eshopweb.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,13 +23,15 @@ public class ItemService {
     @Autowired
     private ItemMapper itemMapper;
 
+    @Transactional(readOnly = true)
     public List<ItemDto> findAll(Sort sort) {
-        List<Item> items = itemRepository.findAll(sort);
+        List<Item> items = itemRepository.findAllFetchCategory(sort);
         return itemMapper.entityToDto(items);
     }
 
+    @Transactional(readOnly = true)
     public Optional<ItemDto> findById(int id) {
-        return itemRepository.findById(id)
+        return itemRepository.findByIdFetchCategory(id)
                 .map(itemMapper::entityToDto); // od Java 8: method reference
 //                .map(item -> itemMapper.entityToDto(item)); // od Java 8: lambda
     }

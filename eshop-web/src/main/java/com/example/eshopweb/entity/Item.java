@@ -30,7 +30,8 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private List<OrderedItem> orderedItems;
 
-    @ManyToOne
+    // POZOR! VYCHOZI NASTAVENI VAZBY JE: fetch = FetchType.EAGER
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
