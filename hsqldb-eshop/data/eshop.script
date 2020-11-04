@@ -54,9 +54,9 @@ GRANT DBA TO SA
 SET SCHEMA SYSTEM_LOBS
 INSERT INTO BLOCKS VALUES(0,2147483647,0)
 SET SCHEMA PUBLIC
-INSERT INTO ITEM VALUES(1,'EBook','Java in 21 days',500.0E0,1)
-INSERT INTO ITEM VALUES(2,'Coffee cup','Java cup',100.0E0,1)
-INSERT INTO ITEM VALUES(3,'T-shirts for all Java programmers','Java t-shirt',500.0E0,1)
+INSERT INTO ITEM VALUES(1,'EBook','Java in 21 days',500.0E0,2)
+INSERT INTO ITEM VALUES(2,'Coffee cup','Java cup',100.0E0,2)
+INSERT INTO ITEM VALUES(3,'T-shirts for all Java programmers','Java t-shirt',500.0E0,2)
 INSERT INTO ITEM VALUES(4,'per manhour','Professional Java consulting',1000.0E0,1)
 INSERT INTO ITEM VALUES(5,'per manday','Professional Java training',13000.0E0,1)
 INSERT INTO ITEM VALUES(6,NULL,'Aaa',123.0E0,1)
