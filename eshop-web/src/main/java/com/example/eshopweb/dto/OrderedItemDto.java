@@ -1,4 +1,4 @@
-package com.example.eshopweb.dto.entity;
+package com.example.eshopweb.dto;
 
 public class OrderedItemDto {
 

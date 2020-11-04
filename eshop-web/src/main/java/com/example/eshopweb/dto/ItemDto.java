@@ -1,4 +1,4 @@
-package com.example.eshopweb.dto.entity;
+package com.example.eshopweb.dto;
 
 import java.util.List;
 

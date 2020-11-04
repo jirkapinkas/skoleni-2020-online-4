@@ -1,6 +1,6 @@
 package com.example.eshopweb.service;
 
-import com.example.eshopweb.dto.entity.ItemDto;
+import com.example.eshopweb.dto.ItemDto;
 import com.example.eshopweb.entity.Item;
 import com.example.eshopweb.exception.DeleteException;
 import com.example.eshopweb.exception.NotFoundException;
