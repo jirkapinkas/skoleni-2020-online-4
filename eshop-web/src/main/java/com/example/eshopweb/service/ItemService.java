@@ -2,6 +2,7 @@ package com.example.eshopweb.service;
 
 import com.example.eshopweb.dto.entity.ItemDto;
 import com.example.eshopweb.entity.Item;
+import com.example.eshopweb.exception.DeleteException;
 import com.example.eshopweb.exception.NotFoundException;
 import com.example.eshopweb.mapper.ItemMapper;
 import com.example.eshopweb.repository.ItemRepository;
@@ -42,7 +43,11 @@ public class ItemService {
         if(!itemRepository.existsById(id)) {
             throw new NotFoundException("Item with id: " + id + " does not exist!");
         }
-        itemRepository.deleteById(id);
+        try {
+            itemRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new DeleteException("Couldn't delete item with id: " + id);
+        }
     }
 
 }
