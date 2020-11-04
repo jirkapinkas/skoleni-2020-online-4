@@ -25,13 +25,15 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public List<ItemDto> findAll(Sort sort) {
-        List<Item> items = itemRepository.findAllFetchCategory(sort);
+        List<Item> items = itemRepository.findAll(sort);
+//        List<Item> items = itemRepository.findAllFetchCategory(sort);
         return itemMapper.entityToDto(items);
     }
 
     @Transactional(readOnly = true)
     public Optional<ItemDto> findById(int id) {
-        return itemRepository.findByIdFetchCategory(id)
+        return itemRepository.findById(id)
+//        return itemRepository.findByIdFetchCategory(id)
                 .map(itemMapper::entityToDto); // od Java 8: method reference
 //                .map(item -> itemMapper.entityToDto(item)); // od Java 8: lambda
     }
