@@ -44,6 +44,7 @@ public class ItemService {
         return itemMapper.entityToDto(managedItem);
     }
 
+    @Transactional
     public void deleteById(int id) {
         if(!itemRepository.existsById(id)) {
             throw new NotFoundException("Item with id: " + id + " does not exist!");
