@@ -15,4 +15,6 @@ public interface ItemService {
 
     void deleteById(int id);
 
+    void clearCache();
+
 }
