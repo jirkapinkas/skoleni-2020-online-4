@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,14 +49,14 @@ public class ItemController {
 
     // http://localhost:8080/item
     @PostMapping
-    public ItemDto insert(@RequestBody ItemDto itemDto) {
+    public ItemDto insert(@Valid @RequestBody ItemDto itemDto) {
         itemDto.setId(0); // ID (klic) se nastavi na nulu => operace save() bude provadet insert
         return itemService.save(itemDto);
     }
 
     // http://localhost:8080/item/1
     @PutMapping("/{id}")
-    public ItemDto update(@RequestBody ItemDto itemDto, @PathVariable int id) {
+    public ItemDto update(@Valid @RequestBody ItemDto itemDto, @PathVariable int id) {
         itemDto.setId(id); // ID (klic) se natvrdo nastavi na hodnotu atributu "id"
         return itemService.save(itemDto);
     }

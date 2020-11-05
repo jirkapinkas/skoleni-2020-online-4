@@ -1,13 +1,20 @@
 package com.example.eshopweb.dto;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class ItemDto {
 
     private int id;
 
+    @NotNull
+    @Size(min = 1, max = 255)
     private String name;
 
+    @Min(1)
     private double price;
 
     private List<OrderedItemDto> orderedItems;
