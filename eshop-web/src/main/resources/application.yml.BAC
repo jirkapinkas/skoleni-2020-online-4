@@ -1,0 +1,26 @@
+server:
+  port: 8080
+# Na zaklade teto konfigurace se pri startu Spring kontejneru vytvori objekt typu HikariDataSource
+spring:
+  datasource:
+    url: jdbc:hsqldb:hsql://localhost:9001/eshop
+    username: sa
+    password:
+  jpa:
+    # Vypise vykonavane SQL prikazy / dotazy do konzole
+    show-sql: true
+    # Toto je dulezite pouze pro tuto databazi (HSQLDB)!!!
+    hibernate:
+      ddl-auto: none
+    # STRASNE DULEZITE NASTAVENI, VYPNE "automagicky" MECHANISMUS
+    # NACITANI LAZY VAZEB
+    open-in-view: false
+  task:
+    execution:
+      pool:
+        # velikost poolu vlaken pro @Async
+        max-size: 100
+    scheduling:
+      pool:
+        # velikost poolu vlaken pro @Scheduled
+        size: 100
